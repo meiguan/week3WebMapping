@@ -19,8 +19,8 @@ $(document).ready(function(){
 
 // when something with class album-list-cover is clicked, run some code
 $('.email-prompt-item').on('click', function() {
-	// pull out the album cover url from the element's attributes
-	var cartoonUrl = $(this).attr('cartoon')
+  // pull out the album cover url from the element's attributes
+  var cartoonUrl = $(this).attr('cartoon')
   // log the album cover url to the console
   console.log(cartoonUrl)
   
@@ -36,8 +36,17 @@ $('.email-prompt-item').on('click', function() {
 $("#btn").click(function(){
     $("input[name='correctAnswer']").each(function(){
       if($(this).val() !== "1"){
-        $(this).prop("checked", false);
-        $(this).addClass('clear');
+        $(this).prop("checked",false);
+        rname=$(this).attr("for");
+            $("label[for="+rname+"]").removeClass("blocked");
+            $("label[for="+rname+"] > input").attr("checked",false);
+            //$(this).children("input").attr("checked",true);
+            if( $(this).children("input").attr("value")==answers[(rname.substr(1, 1))-1] ){
+                $(this).removeClass("green");
+            }
+            else{
+                $(this).removeClass("red");
+            }
       }
     });
   });

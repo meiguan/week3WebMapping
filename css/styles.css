@@ -67,10 +67,6 @@ p {
     background: #f44;
 }
 
-.clear{
-  all: unset;
-}
-
 #reset-button {
   width: 100%;
   display: inline-block;
