@@ -36,8 +36,8 @@ $('.email-prompt-item').on('click', function() {
 $("#btn").click(function(){
     $("input[name='correctAnswer']").each(function(){
       if($(this).val() !== "1"){
-        $(this).prop("checked",false);
-        $(this).addClass("clear");
+        $(this).prop("checked", false);
+        $(this).addClass('clear');
       }
     });
   });

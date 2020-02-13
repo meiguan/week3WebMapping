@@ -68,8 +68,7 @@ p {
 }
 
 .clear{
-  background: #fff;
-  border: 1px solid #c00;
+  all: unset;
 }
 
 #reset-button {
