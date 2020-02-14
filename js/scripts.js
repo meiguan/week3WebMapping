@@ -34,19 +34,14 @@ $('.email-prompt-item').on('click', function() {
 })
 
 $("#btn").click(function(){
-    $("input[name='correctAnswer']").each(function(){
+    $(".email-prompt-item").each(function(){
+      console.log(this)
+      $(this).children().removeClass('green')
+      $(this).children().removeClass('red')
+
       if($(this).val() !== "1"){
         $(this).prop("checked",false);
-        rname=$(this).attr("for");
-            $("label[for="+rname+"]").removeClass("blocked");
-            $("label[for="+rname+"] > input").attr("checked",false);
-            //$(this).children("input").attr("checked",true);
-            if( $(this).children("input").attr("value")==answers[(rname.substr(1, 1))-1] ){
-                $(this).removeClass("green");
-            }
-            else{
-                $(this).removeClass("red");
-            }
+
       }
     });
   });
