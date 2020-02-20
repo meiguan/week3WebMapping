@@ -1,85 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset='utf-8' />
+      <title>College Map</title>
+      <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+      <link href='css/styles.css' rel='stylesheet' />
+  </head>
+  <body>
+    <!-- the sidebar is fixed width and will contain a title, some text, and buttons -->
+    <div id='sidebar'>
+    <h3>New York State Colleges</h3>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+    <p>My students all provided their favorite pizza places.</p>
 
-  <title>Class 2 Sample</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
+    <p>📍Click a marker to see the student's name and the name of the pizza joint.</p>
 
-  <link rel="stylesheet" href="css/styles.css">
+    <hr/>
 
-</head>
+    <p>Most of these are in NYC, but some are not.</p>
+    <p>👆Click the buttons below to fly to the non-nyc pizza places.</p>
 
-<body>
-<div class="container">
-  <h1>How to email like a boss?</h1>
-  
-  <div id="email-list">
-    <div class="email-prompt-item" cartoon = "https://www.readersdigest.ca/wp-content/uploads/sites/14/2019/05/2019-05-27-work-cartoon.jpg">
-      <p class="prompt">I took a while but you can deal</p>
-      <label for="p1"><input type="radio" name="correctAnswer" value="A">Thanks for your patience</label>
-      <label for="p1"><input type="radio" name="correctAnswer" value="B">Sorry for the delay</label>
-    </div>
-    
-    <div class="email-prompt-item" cartoon = "https://media.newyorker.com/photos/59cd5d4b6dfdc61980768f91/master/w_1600%2Cc_limit/02_Cactus.jpg">
-      <p class="prompt">My schedule matters too</p>
-      <label for="p2"><input type="radio" name="correctAnswer" value="A">What works best for you?</label>
-      <label for="p2"><input type="radio" name="correctAnswer" value="B">Could you do __:__?</label>
-    </div>
+    <br/>
+    <!-- Buttons for flying the map -->
+    <button class='flyto-button' id="NYU">NYU</button>
+    <br/>
 
-    <div class="email-prompt-item" cartoon = "https://i.redd.it/5oiq75y5gi341.png">
-      <p class="prompt">Yeah, you're welcome.</p>
-      <label for="p3"><input type="radio" name="correctAnswer" value="A">No problem/ no worries</label>
-      <label for="p3"><input type="radio" name="correctAnswer" value="B">Always happy to help!</label>
-    </div>
+    <button class='flyto-button' id="michigan">✈️ Michigan, USA</button>
+    <br/>
 
-    <div class="email-prompt-item" cartoon = "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/sharing-an-office-glen-baxter.jpg">
-      <p class="prompt">I know what I'm doing</p>
-      <label for="p4"><input type="radio" name="correctAnswer" value="A">I think maybe we should __</label>
-      <label for="p4"><input type="radio" name="correctAnswer" value="B">It'd be best if we __</label>
-    </div>
-    
-    <div class="email-prompt-item" cartoon = "https://i.pinimg.com/originals/4f/b2/c8/4fb2c88d430867953676a192ae8f52e4.jpg">
-      <p class="prompt">Wording this is hard...</p>
-      <label for="p5"><input type="radio" name="correctAnswer" value="A">It'd be easier to discuss in person</label>
-      <label for="p5"><input type="radio" name="correctAnswer" value="B">*Rewriting an email for 40 minutes*</label>
+    <button class='flyto-button' id="colombia">✈️ Colombia</button>
+    <br/>
+
+    <button class='flyto-button' id="nyc">🗽 Go to where there is actually good pizza</button>
     </div>
 
-    <div class="email-prompt-item">
-      <p class="prompt">Do you get it?</p>
-      <label for="p6"><input type="radio" name="correctAnswer" value="A">Let me know if you have questions</label>
-      <label for="p6"><input type="radio" name="correctAnswer" value="B">Hopefully that makes sense?</label>
-    </div>
+    <!-- this is the map container, which will hold the mapboxGL map -->
+    <div id='map-container'></div>
 
-    <div class="email-prompt-item" cartoon = "https://jackziegler.com/wp-content/uploads/2017/07/TCB-34277.jpg">
-      <p class="prompt">Where the heck are we on this?</p>
-      <label for="p7"><input type="radio" name="correctAnswer" value="A">Just wanted to check in</label>
-      <label for="p7"><input type="radio" name="correctAnswer" value="B">When can I expect an update?</label>
-    </div>
-    
-    <div class="email-prompt-item" cartoon = "https://pbs.twimg.com/media/DZqD2SxX0AE70bs.jpg">
-      <p class="prompt">I made a small mistake</p>
-      <label for="p8"><input type="radio" name="correctAnswer" value="A">Ahh sorry! My bad, totally missed that.</label>
-      <label for="p8"><input type="radio" name="correctAnswer" value="B">Nice catch! Updated file attached. Thanks for letting me know!</label>
-    </div>
- </div>
- 
- <div id="cartoon-art">
-   <p>Select how you've conveyed this sentiment via email over the last 24 hours...</p> 
-  </div>
- 
-  <div id="reset-button">
-    <button type="button" id="btn" value="reset">Play Again!</button>
- </div>
+    <!-- Load mapboxGL, jQuery, then our local javascript files -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script src='js/data.js'></script>
+    <script src='js/scripts.js'></script>
 
-</div>
-
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-  <script src="js/scripts.js"></script>
-</body>
-  </html>
+  </body>
+</html>

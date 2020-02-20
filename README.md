@@ -1,2 +1,6 @@
-# testProj
-test proj for web mapping class
+# week-3-web-mapping
+
+Mapping example using MapBox
+
+Basic adding a marker:
+	
