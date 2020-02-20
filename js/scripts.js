@@ -4,8 +4,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWVpZ3VhbiIsImEiOiJjazZ1NmFtYmUwNmxpM21xczgza
 
 // we want to return to this point and zoom level after the user interacts
 // with the map, so store them in variables
-var initialCenterPoint = [-73.987, 40.735]
-var initialZoom = 10.67
+var initialCenterPoint = [-73.9964609,40.7295134]
+var initialZoom = 11
 
 
 // create an object to hold the initialization options for a mapboxGL map
@@ -22,14 +22,6 @@ var map = new mapboxgl.Map(initOptions);
 // add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 
-// make a single marker in central park
- new mapboxgl.Marker()
-   .setLngLat([-73.974087,40.770718])
-   .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-   .setHTML('I am in Central Park'))
-   .addTo(map);
-
-
 // iterate over each object in collegesData
 collegesData.forEach(function(collegeEntry) {
   // for each object in the studentData, add a marker to the map with a popup
@@ -42,35 +34,37 @@ collegesData.forEach(function(collegeEntry) {
 
 // event listeners for the fly to buttons
 
-$('#NYU').on('click', function() {
+$('#NewYorkCity').on('click', function() {
   map.flyTo({
     center: [-73.997,	40.7297],
     zoom: initialZoom
   })
 })
 
-$('#michigan').on('click', function() {
+$('#FingerLakes').on('click', function() {
 
-  var michiganLngLat = [-83.10538, 42.50448]
+  var fingerLakesLngLat = [-76.496331,42.4395155]
 
   map.flyTo({
-    center: michiganLngLat,
+    center: fingerLakesLngLat,
     zoom: initialZoom
   })
 })
 
-$('#colombia').on('click', function() {
-  var colombiaLngLat = [-73.997208, 0.721615]
+$('#Albany').on('click', function() {
+  var albanyLngLat = [-73.8335277,42.6849853]
 
   map.flyTo({
-    center: colombiaLngLat,
+    center: albanyLngLat,
     zoom: initialZoom
   })
 })
 
-$('#nyc').on('click', function() {
+$('#Buffalo').on('click', function() {
+  var buffaloLngLat = [-78.7911584,43.0008132]
+
   map.flyTo({
-    center: initialCenterPoint,
+    center: buffaloLngLat,
     zoom: initialZoom
   })
 })
